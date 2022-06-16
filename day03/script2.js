@@ -7,19 +7,20 @@ const input = jsonData.split(' ');
 const directions = input.filter(item => !(parseInt(item) == item));
 const magnitude = input.filter(item => (parseInt(item) == item));
 
-let depth = 0, distance = 0, count = 0;
+let depth = 0, distance = 0, aim = 0, count = 0;
 
 for (let i = 0; i < directions.length; i++) {
   count += 1;
   switch (directions[i]) {
     case 'forward':
       distance += parseInt(magnitude[i]);
+      depth += parseInt(magnitude[i]) * aim;
       break;
     case 'up':
-      depth -= parseInt(magnitude[i]);
+      aim -= parseInt(magnitude[i]);
       break;
     case 'down':
-      depth += parseInt(magnitude[i]);
+      aim += parseInt(magnitude[i]);
       break;
     default:
       break;
