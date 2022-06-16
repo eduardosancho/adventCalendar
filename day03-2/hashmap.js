@@ -14,7 +14,15 @@ class NaiveHashMap {
   }
 
   hash(key) {
-    return key.toString().length;
+    let hashValue = 0;
+    const stringKey = key.toString();
+
+    for (let index = 0; index < stringKey.length; index++) {
+      const charCode = stringKey.charCodeAt(index);
+      hashValue += charCode;
+    }
+
+    return hashValue;
   }
 
   getIndex(key) {
