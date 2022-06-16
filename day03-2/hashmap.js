@@ -15,10 +15,10 @@ class NaiveHashMap {
 
   hash(key) {
     let hashValue = 0;
-    const stringKey = `${key}`;
+    const stringTypeKey = `${key}${typeof key}`;
 
-    for (let index = 0; index < stringKey.length; index++) {
-      const charCode = stringKey.charCodeAt(index);
+    for (let index = 0; index < stringTypeKey.length; index++) {
+      const charCode = stringTypeKey.charCodeAt(index);
       hashValue += charCode << (index * 8);
     }
 
