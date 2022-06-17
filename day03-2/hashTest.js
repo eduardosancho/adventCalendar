@@ -3,7 +3,7 @@
 import { DecentHashMap } from "./hashmap.js";
 import assert from "assert";
 
-const hashMap = new DecentHashMap();
+const hashMap = new DecentHashMap(10);
 
 hashMap.set('cat', 2);
 hashMap.set('rat', 7);
