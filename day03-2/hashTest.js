@@ -1,6 +1,6 @@
 // import _ from 'lodash';
 
-import { DecentHashMap } from "./hashmap.js";
+import { DecentHashMap } from "./decentHashMap.js";
 import assert from "assert";
 
 const hashMap = new DecentHashMap(10);
