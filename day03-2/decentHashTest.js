@@ -1,9 +1,12 @@
 // import _ from 'lodash';
 
-import { DecentHashMap } from "./decentHashMap.js";
+// import { DecentHashMap } from "./decentHashMap.js";
+import { SimpleHashMap } from "./simpleHashMap.js";
+
 import assert from "assert";
 
-const hashMap = new DecentHashMap(10);
+// const hashMap = new DecentHashMap(10);
+const hashMap = new SimpleHashMap(10);
 
 hashMap.set('cat', 2);
 hashMap.set('rat', 7);
