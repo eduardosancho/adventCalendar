@@ -1,16 +1,29 @@
-class NaiveHashMap {
+class DecentHashMap {
   constructor(initialCapacity = 2) {
     this.buckets = new Array(initialCapacity);
+    this.collisions = 0;
   }
 
   set(key, value) {
-    const index = this.getIndex(key);
-    this.buckets[index] = value;
+    const bucketIndex = this.getIndex(key);
+    if (this.buckets[bucketIndex]) {
+      this.buckets[bucketIndex].push({ key, value });
+      if (this.buckets[bucketIndex].length > 1) { this.collisions++; }
+      
+    } else {
+      this.buckets[bucketIndex] = [{ key, value }];
+    }
+    return this;
   }
 
   get(key) {
-    const index = this.getIndex(key);
-    return this.buckets[index];
+    const bucketIndex = this.getIndex(key);
+    for (let arrayIndex = 0; arrayIndex < this.buckets[bucketIndex].length; arrayIndex++) {
+      const entry = this.buckets[bucketIndex][arrayIndex];
+      if (entry.key === key) {
+        return entry.value;
+      }
+    }
   }
 
   hash(key) {
@@ -32,4 +45,4 @@ class NaiveHashMap {
   }
 }
 
-export { NaiveHashMap };
+export { DecentHashMap };
