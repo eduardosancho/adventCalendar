@@ -14,7 +14,7 @@ node <file_name>
 # FOR EXAMPLE node script.js
 ~~~
 
-
+## List of challenges
 - Day 01, Count amount of increases in a reading
 - Day 01.2, Count amount of increases in groups of readings
 - Day 02, Track forward and depth displacement
