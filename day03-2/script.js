@@ -3,14 +3,26 @@
 
 import jsonData from './data.json' assert {type: 'json'};
 const input = jsonData.split(' ');
-console.log(input);
+const size = input[0].length;
 
-let gammaRate = {}, epsilonRate = {};
-gammaRate[0] = 'damn';
+let bitCounter = new Array(12);
+for (let i = 0; i < size; i++) {
+  bitCounter[i] = [0, 0];
+}
 
-console.log(gammaRate);
+input.forEach(binaryStr => {
+  binaryStr.split('').forEach((bit, index) => {
+    bitCounter[index][parseInt(bit)]++;
+  })
+})
 
-// input.forEach(binaryStr => {
-// });
+let gammaRate = [];
+let epsilonRate = [];
 
-// console.log(input[0].length);
+bitCounter.forEach((pair, index) => {
+  gammaRate[index] = pair.indexOf(Math.max(...pair));
+  epsilonRate[index] = pair.indexOf(Math.min(...pair));
+})
+
+const powerConsumption = parseInt(gammaRate.join(''), 2) * parseInt(epsilonRate.join(''), 2);
+console.log(powerConsumption);
