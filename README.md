@@ -13,3 +13,10 @@ Execute the scripts by running:
 node <file_name>
 # FOR EXAMPLE node script.js
 ~~~
+
+
+- Day 01, Count amount of increases in a reading
+- Day 01.2, Count amount of increases in groups of readings
+- Day 02, Track forward and depth displacement
+- Day 02.2, Use aim to calculate depth displacement
+- Day 03, Find most repeated binary values

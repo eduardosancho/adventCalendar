@@ -27,9 +27,5 @@ for (let i = 0; i < directions.length; i++) {
   }
 }
 
-console.log('magnitude', magnitude);
-console.log('directions', directions);
-
-
 console.log('distance', distance);
 console.log('depth', depth);

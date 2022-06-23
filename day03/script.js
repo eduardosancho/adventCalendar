@@ -1,34 +1,28 @@
-//Challenge
-//https://adventofcode.com/2021/day/2
+// Challenge
+// https://adventofcode.com/2021/day/3
 
-const jsonData = require('./data.json');
+import jsonData from './data.json' assert {type: 'json'};
 const input = jsonData.split(' ');
+const size = input[0].length;
 
-const directions = input.filter(item => !(parseInt(item) == item));
-const magnitude = input.filter(item => (parseInt(item) == item));
-
-let depth = 0, distance = 0, count = 0;
-
-for (let i = 0; i < directions.length; i++) {
-  count += 1;
-  switch (directions[i]) {
-    case 'forward':
-      distance += parseInt(magnitude[i]);
-      break;
-    case 'up':
-      depth -= parseInt(magnitude[i]);
-      break;
-    case 'down':
-      depth += parseInt(magnitude[i]);
-      break;
-    default:
-      break;
-  }
+let bitCounter = new Array(12);
+for (let i = 0; i < size; i++) {
+  bitCounter[i] = [0, 0];
 }
 
-console.log('magnitude', magnitude);
-console.log('directions', directions);
+input.forEach(binaryStr => {
+  binaryStr.split('').forEach((bit, index) => {
+    bitCounter[index][parseInt(bit)]++;
+  })
+})
 
+let gammaRate = [];
+let epsilonRate = [];
 
-console.log('distance', distance);
-console.log('depth', depth);
+bitCounter.forEach((pair, index) => {
+  gammaRate[index] = pair.indexOf(Math.max(...pair));
+  epsilonRate[index] = pair.indexOf(Math.min(...pair));
+})
+
+const powerConsumption = parseInt(gammaRate.join(''), 2) * parseInt(epsilonRate.join(''), 2);
+console.log(powerConsumption);
