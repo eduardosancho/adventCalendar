@@ -10,16 +10,16 @@ stringArray.forEach(function (e) {
   numArray.push(parseInt(e));
 });
 
-let sum1 = 0, sum2 = 0, counter = 0;
+let sum1 = 0, sum2 = 0, incrementCounter = 0;
 
 for (let i = 0; i < numArray.length - 2; i++) {  
   sum1 = numArray[i] + numArray[i + 1] + numArray[i + 2];
 
   if (sum1 > sum2) {
-      counter++;
+      incrementCounter++;
   }
   
   sum2 = sum1;
 }
 
-console.log(counter-1);
+console.log("Increment counter: " + (incrementCounter - 1));

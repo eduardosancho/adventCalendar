@@ -7,11 +7,12 @@ const input = jsonData.split(' ');
 let oxygenInput = input;
 let co2Input = input;
 
-function findRating(input, searchCriteria = 'least') {
-  let position = 0, zeros = 0, ones = 0, whoLives = 0;
+function findRating(allReadings, searchCriteria = 'least') {
+  let remainingReadings = allReadings;
+  let position = 0, zeros = 0, ones = 0, whoLives;
 
-  while (input.length > 1) {
-    input.forEach(binaryStr => {
+  while (remainingReadings.length > 1) {
+    remainingReadings.forEach(binaryStr => { // Count all instances of a value per each position
       const checkVal = binaryStr.charAt(position);
       checkVal === '1' ? ones++ : zeros++;
     })
@@ -19,16 +20,20 @@ function findRating(input, searchCriteria = 'least') {
       whoLives = ones >= zeros ? 1 : 0
       :
       whoLives = zeros <= ones ? 0 : 1;
-    ones = 0;
+    ones = 0; // Reset values
     zeros = 0;
 
-    input = input.filter(binaryStr => binaryStr.charAt(position) === whoLives.toString());
-    position++;
-
+    remainingReadings = remainingReadings.filter(binaryStr => binaryStr.charAt(position) === whoLives.toString()); // Discard, apply search criteria
+    position++; // Advance to next position
   }
-  return parseInt(input[0], 2);
+  return remainingReadings[0];
 }
 
-console.log(findRating(oxygenInput, 'most'));
-console.log(findRating(co2Input));
+const oxygenRating = findRating(oxygenInput, 'most');
+const CO2Rating = findRating(co2Input);
+const lifeSupportRating = parseInt(oxygenRating, 2) * parseInt(CO2Rating, 2);
+
+console.log("Oxygen Generator Rating: " + oxygenRating);
+console.log("CO2 Scrubber Rating: " + CO2Rating);
+console.log("Life Support Rating: " + lifeSupportRating);
 
