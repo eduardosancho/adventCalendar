@@ -25,4 +25,7 @@ bitCounter.forEach((pair, index) => {
 })
 
 const powerConsumption = parseInt(gammaRate.join(''), 2) * parseInt(epsilonRate.join(''), 2);
-console.log(powerConsumption);
+
+console.log("Gamma rate: " + gammaRate.join(''));
+console.log("Epsilon rate: " + epsilonRate.join(''));
+console.log("Power consumption: " + powerConsumption);
